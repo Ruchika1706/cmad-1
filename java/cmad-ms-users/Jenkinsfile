@@ -41,7 +41,7 @@ pipeline {
               echo 'Packaging users app with docker'
                script {
                    docker.withRegistry('https://index.docker.io/v1/', 'dockerlogin') {
-                       def usersImage = docker.build("xxxx/users:v${env.BUILD_ID}", "java/cmad-ms-users")
+                       def usersImage = docker.build("ruchika1706/users:v${env.BUILD_ID}", "java/cmad-ms-users")
                        usersImage.push()
                        usersImage.push("latest")
                    }
