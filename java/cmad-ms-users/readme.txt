@@ -9,5 +9,3 @@ java -jar cmad-user-service.jar
 to http://localhost:8081/user
 
 Remember the uid and devices.
-
-
