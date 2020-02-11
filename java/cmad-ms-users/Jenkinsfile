@@ -36,6 +36,7 @@ pipeline {
             dir('java/cmad-ms-users'){
                sh 'mvn package -DskipTests'
             }
+            archiveArtifacts 'java/cmad-ms-users/target/*.jar'
          }
       }
    }
