@@ -7,6 +7,9 @@ pipeline {
       stage('build') {
          steps {
             echo "Compiling users service"
+            when { 
+                changeset pattern: "java/cmad-ms-users", comparator: "REGEXP" 
+            }
             dir('java/cmad-ms-users'){
                sh 'mvn compile'
             }        
@@ -15,6 +18,9 @@ pipeline {
       stage('test') {
          steps {
             echo "Running unit tests on users service"
+            when { 
+                changeset pattern: "java/cmad-ms-users", comparator: "REGEXP" 
+            }
             dir('java/cmad-ms-users'){
                sh 'mvn clean test'
             }
@@ -22,6 +28,9 @@ pipeline {
       }
       stage('package') {
          steps {
+            when { 
+                branch "master"
+            }
             echo "Packaging users app"
             dir('java/cmad-ms-users'){
                sh 'mvn package -DskipTests'
